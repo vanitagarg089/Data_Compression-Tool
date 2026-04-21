@@ -1,0 +1,231 @@
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ── Body / Background ── */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2dd4bf, #14b8a6, #f4c2a1);
+  padding: 20px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  width: 350px; height: 350px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  top: 8%; left: 12%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  width: 300px; height: 300px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  bottom: 8%; right: 10%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* ── Card ── */
+.container {
+  width: 900px;
+  max-width: 100%;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.18);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Left panel ── */
+.left {
+  flex: 1;
+  padding: 36px;
+  color: white;
+}
+
+/* ── Sidebar ── */
+.right {
+  width: 62px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 0;
+  font-size: 22px;
+}
+
+/* ── Dots ── */
+.dots {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.dot {
+  width: 12px; height: 12px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+/* ── Heading ── */
+h1  { font-size: 28px; margin-bottom: 4px; }
+.sub { color: rgba(255,255,255,0.78); font-size: 13px; margin-bottom: 20px; }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.tab {
+  padding: 8px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  background: transparent;
+  color: white;
+  transition: background 0.2s;
+}
+.tab.active,
+.tab:hover { background: rgba(255,255,255,0.28); }
+
+/* ── Textarea ── */
+textarea {
+  width: 100%;
+  height: 130px;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 14px 16px;
+  font-size: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-family: inherit;
+}
+textarea::placeholder { color: rgba(255,255,255,0.6); }
+
+/* ── Upload zone ── */
+.upload-zone {
+  width: 100%;
+  height: 130px;
+  border: 2px dashed rgba(255,255,255,0.45);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: rgba(255,255,255,0.82);
+  font-size: 14px;
+}
+.upload-zone:hover,
+.upload-zone.drag  { background: rgba(255,255,255,0.14); }
+.upload-icon       { font-size: 30px; }
+.upload-hint       { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+#fileInput { display: none; }
+
+.filename {
+  display: none;
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.15);
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+/* ── Button ── */
+.compress-btn {
+  margin-top: 16px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.25);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.25s, background 0.25s;
+  font-family: inherit;
+}
+.compress-btn:hover   { transform: scale(1.05); background: rgba(255,255,255,0.38); }
+.compress-btn:disabled{ opacity: 0.5; cursor: wait; }
+
+/* ── Result panel ── */
+.result {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.14);
+}
+.result h2           { font-size: 17px; margin-bottom: 12px; }
+.placeholder-text    { font-size: 13px; color: rgba(255,255,255,0.68); }
+
+/* ── Stat badge grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+.badge {
+  background: rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.badge .num  { font-size: 20px; font-weight: 700; }
+.badge .lbl  { font-size: 11px; color: rgba(255,255,255,0.72); margin-top: 3px; }
+.badge.saved { background: rgba(110,231,183,0.25); }
+
+/* ── Progress bars ── */
+.stat           { margin: 8px 0; }
+.stat label     { font-size: 12px; color: rgba(255,255,255,0.72); display: block; margin-bottom: 3px; }
+.bar-bg         { height: 8px; background: rgba(255,255,255,0.14); border-radius: 4px; overflow: hidden; }
+.bar-fill       { height: 100%; border-radius: 4px; transition: width 0.55s ease; }
+.bar-original   { background: rgba(255,255,255,0.45); }
+.bar-compressed { background: #6ee7b7; }
+
+/* ── Code display ── */
+.codes {
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.82);
+  background: rgba(0,0,0,0.12);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+/* ── Error / info ── */
+.error-msg { font-size: 13px; color: rgba(255,200,200,0.9); margin-top: 6px; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .left   { padding: 22px; }
+  .right  { width: 44px; font-size: 18px; }
+  h1      { font-size: 22px; }
+  .grid   { grid-template-columns: 1fr 1fr; }
+}

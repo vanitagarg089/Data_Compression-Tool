@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Huffman Compression</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <div class="left">
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <h1>🚀 Huffman Compression</h1>
+    <p class="sub">Real C++ Backend · Lossless Huffman Coding</p>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('text')">📝 Text Input</button>
+      <button class="tab"        onclick="switchTab('file')">📁 File Upload</button>
+    </div>
+
+    <!-- Text Tab -->
+    <div id="textTab">
+      <textarea id="txt" placeholder="Enter your text here..."></textarea>
+    </div>
+
+    <!-- File Tab -->
+    <div id="fileTab" style="display:none">
+      <div class="upload-zone" id="dropZone"
+           onclick="document.getElementById('fileInput').click()"
+           ondragover="event.preventDefault();this.classList.add('drag')"
+           ondragleave="this.classList.remove('drag')"
+           ondrop="dropFile(event)">
+        <div class="upload-icon">📂</div>
+        <span>Click to browse or drag &amp; drop</span>
+        <span class="upload-hint">Any text / source file</span>
+      </div>
+      <input type="file" id="fileInput" onchange="fileSelected(this)" />
+      <div class="filename" id="fileLabel">📄 No file selected</div>
+    </div>
+
+    <button class="compress-btn" id="btn" onclick="compress()">⚡ Compress Now</button>
+
+    <!-- Result panel -->
+    <div class="result" id="out">
+      <h2>Compression Result</h2>
+      <p class="placeholder-text">Enter text or upload a file, then click Compress Now.</p>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="right">
+    <span>🏠</span>
+    <span>💬</span>
+    <span>📁</span>
+    <span>👤</span>
+    <span>⚙️</span>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
